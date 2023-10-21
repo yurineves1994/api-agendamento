@@ -32,11 +32,11 @@ Siga as etapas abaixo para executar localmente o projeto de Agenda com Spring + 
 
 2. Utilize consultas e mutações GraphQL para interagir com o sistema.
 
-    - **Criar Usuário:**
+    - **Criar Funcionario:**
 
         ```graphql
         mutation {
-          createUser(name: "Nome", document: "123456789", position: "Cargo") {
+          createEmployee(name: "YURI", document: "xxxxxxxxxxx", position: "diretor") {
             id
             name
             document
@@ -49,24 +49,41 @@ Siga as etapas abaixo para executar localmente o projeto de Agenda com Spring + 
 
         ```graphql
         mutation {
-          createScheduling(date: "2023-10-15T14:00:00", userId: "123") {
-            id
-            date
-            userId
-          }
-        }
+          createScheduling(
+            title:"REUNIÃO 01", 
+            description: "DESCRIÇÃO REUNIÃO 01",
+            duration: "25"
+            clientName: "Cliente X"
+            clientEmail: "teste@teste.com"
+            clientPhone: "(11) 11111-1111"
+            date: "17/11/2023 10:10",
+            employeeId: "215e50e7-d584-4f1d-851b-ee0ebad75af2") {
+                id
+                date
+                employeeId
+              }
+            }
         ```
 
-    - **Obter Todos os Usuários:**
+    - **Obter Todos os Funcionarios:**
 
         ```graphql
         query {
-          getAllUser {
-            id
-            name
-            document
-            position
-          }
+          getAllEmployee {
+              id
+              name
+              document
+              scheduling {
+                id,
+                title
+                description
+                duration
+                clientName
+                clientPhone
+                clientEmail
+                date
+              }
+            }
         }
         ```
 
@@ -74,13 +91,38 @@ Siga as etapas abaixo para executar localmente o projeto de Agenda com Spring + 
 
         ```graphql
         query {
-          getUserById(id: "123") {
-            id
-            name
-            document
-            position
+           getEmployeeById(id: "910418d6-cfdb-41d7-8dfd-bb85ddc52de5") {
+                  name
+                  document
+                scheduling {
+                  title,
+                  date
+                }
+              }
+            }
+        ```
+
+    - **Registro:**
+
+        ```graphql
+        mutation {
+           register(login: "mail@mail.com",
+            password: "12345",
+            name: "Usuario 01"
+            cpf: "111.111.111-11"
+            phone: "11 1111-1111"
+            birth: "01/01/2000"
+            role: "ADMIN") {
+            id,
+            password
+            role
           }
-        }
+        ```
+    - **Login:**
+
+        ```graphql
+        mutation {
+           login(login: "mail@mail.com", password: "12345")
         ```
 
 3. Explore outras funcionalidades da API GraphQL.
