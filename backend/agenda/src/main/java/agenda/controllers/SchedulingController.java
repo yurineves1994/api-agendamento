@@ -31,6 +31,7 @@ public class SchedulingController {
     return employeeService.findAll();
   }
 
+  @PreAuthorize("isAuthenticated()")
   @QueryMapping
   public Optional<Employee> getEmployeeById(@Argument String id) {
     System.out.println("getEmployeeById");
@@ -44,6 +45,7 @@ public class SchedulingController {
     return employeeService.createEmployee(name, document, position);
   }
 
+  @PreAuthorize("isAuthenticated()")
   @MutationMapping
   public Scheduling createScheduling(@Argument String title, @Argument String description, @Argument String duration,
       @Argument String clientName, @Argument String clientEmail, @Argument String clientPhone,
@@ -53,6 +55,7 @@ public class SchedulingController {
         date, employeeId);
   }
 
+  @PreAuthorize("isAuthenticated()")
   @MutationMapping
   public Boolean removeScheduling(@Argument String id) {
     return schedulingService.removeSchedulings(id);

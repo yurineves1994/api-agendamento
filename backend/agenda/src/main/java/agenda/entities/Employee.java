@@ -26,7 +26,6 @@ public class Employee {
   private String id;
 
   @NotBlank
-  @Size(min = 3, max = 10, message = "O nome deve conter entre {min} e {max} caracteres.")
   private String name;
   
   @NotBlank
