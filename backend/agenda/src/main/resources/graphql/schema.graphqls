@@ -1,0 +1,42 @@
+type User {
+   id: ID!
+   login:String!
+   password:String!
+   role:String!
+}
+
+type Employee {
+   id: ID!
+   name:String!
+   document:String!
+   position:String!
+   scheduling: [Scheduling]
+   allEmployee: [Employee!]
+}
+
+type Scheduling {
+   id: ID!
+   title: String!
+   description: String!
+   duration: String!
+   clientName: String!
+   clientEmail: String!
+   clientPhone: String!
+   date:String!
+   employeeId:String!
+}
+
+type Query {
+    getAllEmployee: [Employee]
+    getEmployeeById(id: ID!): Employee
+}                       
+
+type Mutation {
+    createEmployee(name:String!, document:String!, position:String!): Employee
+    createScheduling(title:String!, description:String!, duration:String!,
+        clientName:String!, clientEmail:String!, clientPhone:String!,
+        date:String!, employeeId:String!): Scheduling
+    removeScheduling(id:String!):Boolean
+    login(login:String!, password:String!):String
+    register(login:String!, password:String!, name:String!, cpf:String!, phone:String!, birth:String!, role:String!):User
+}
