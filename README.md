@@ -132,6 +132,8 @@ Siga as etapas abaixo para executar localmente o projeto de Agenda com Spring + 
 ### Backend (Java/Spring Boot)
 - [Java](https://www.java.com/)
 - [Spring Boot](https://spring.io/projects/spring-boot)
+- [Spring Securiy](https://spring.io/projects/spring-boot)
+- [JWT](https://jwt.io/)
 - [Hibernate](https://hibernate.org/)
 - [H2 Database](https://www.h2database.com/)
 
